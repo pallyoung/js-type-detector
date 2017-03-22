@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>test js-type-detector</title>
+    <script src = '../dist/js-type-detector.js'></script>
+</head>
+<body>
+    <script>
+        function A(){
+
+        }
+        var a = new A();
+        console.log('the type of a is '+TypeDetector.is(a));//'A'
+        console.log('is a an object:'+TypeDetector.isObject(a))//'true
+        console.log('is a empty:'+TypeDetector.isEmpty(a))//'false,
+        console.log('is a empty value:'+TypeDetector.isEmptyValue(a))//'false,
+
+        var b = {}
+        console.log('the type of b is '+TypeDetector.is(b));//'object'
+        console.log('is b an object: '+TypeDetector.isObject(b));//'true'
+        console.log('is b empty:'+TypeDetector.isEmpty(b))
+        console.log('is b empty value:'+TypeDetector.isEmptyValue(b))
+        
+    </script>
+</body>
+</html>
