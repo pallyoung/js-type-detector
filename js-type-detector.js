@@ -145,6 +145,9 @@
     function isFalse(value){
         return !!value;
     }
+    function isRegExp(value){
+        return OPToString(val) == '[object RegExp]';
+    }
     /**
      * @description 返回空对象 null undefined ''
      * 
@@ -175,7 +178,8 @@
         isEmpty: isEmpty,
         isNaN: isNaN,
         isStrictFalse:isStrictFalse,
-        isFalse:isFalse
+        isFalse:isFalse,
+        isRegExp
     }
     return TypeDetector
 })
