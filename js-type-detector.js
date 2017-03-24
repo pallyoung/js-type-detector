@@ -45,7 +45,7 @@
         var type = OPToString.call(object).slice(8, -1);
         if (type !== 'Object') {
             return type;
-        } else if (testFunctionName.test(object.constructor.toString())) {
+        } else if (typeof object.constructor === 'function' && testFunctionName.test(object.constructor.toString())) {
             type = RegExp.$1;
             return type;
         }
@@ -91,13 +91,22 @@
         return typeof value ===  'object';
     }
     /**
+     * @description 是否简单的对象 直接是Object的实例
+     * 
+     * @param {any} value 
+     * @returns 
+     */
+    function isPlainObject(value){
+        return typeof value === '[object Object]'&&!value.constructor||(value.constructor == Object);
+    }
+    /**
      * @description 对象实例中是否含有可枚举的值（例如{}）
      * 
      * @param {any} value 
      * @returns 
      */
     function hasEnumerableProperty(value) {
-        return is(value) === 'Object' && keys(value).length <= 0;
+        return is(value) === 'Object' && keys(value).length > 0;
     }
     /**
      * @description 是否字符串
@@ -136,7 +145,7 @@
      * @returns {boolean}
      */
     function isEmptyValue(value) {
-        return isNull(value) || isUndefined(value) || isEmptyString(value) || isEmptyArray(value) || hasEnumerableProperty(value)
+        return isNull(value) || isUndefined(value) || isEmptyString(value) || isEmptyArray(value) || !hasEnumerableProperty(value)
     }
 
     function isStrictFalse(value){
@@ -166,6 +175,7 @@
         isFunction: isFunction,
         isNative: isNative,
         isObject: isObject,
+        isPlainObject:isPlainObject,
         isNull: isNull,
         isNumber: isNumber,
         isZero: isZero,
