@@ -6,7 +6,7 @@ var dist = 'dist/';
 gulp.task('release',function(){
     gulp.src('js-type-detector.js').
     pipe(gulp.dest(dist)).
-    pipe(uglify()).
+    pipe(uglify().on('error',function(error){console.log(error,111)})).
     pipe(rename({suffix:'.min'}))
     .pipe(gulp.dest(dist));   
 });

@@ -1,6 +1,6 @@
 {
   "name": "js-type-detector",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "awesome js type detector,use to detect js object type",
   "main": "dist/js-type-detector.js",
   "scripts": {

@@ -12,6 +12,8 @@
     var hasProtoEnumBug = function () { }.propertyIsEnumerable('prototype');
     var dontEnums = ['toString', 'toLocaleString', 'valueOf', 'hasOwnProperty', 'isPrototypeOf', 'propertyIsEnumerable', 'constructor'];
     var dontEnumsLength = dontEnums.length;
+    var ohasOwn = Object.prototype.hasOwnProperty;
+
     var keys = Object.keys || function (object) {
         var theKeys = [];
         var skipProto = hasProtoEnumBug && typeof object === 'function';
@@ -189,7 +191,7 @@
         isNaN: isNaN,
         isStrictFalse:isStrictFalse,
         isFalse:isFalse,
-        isRegExp
-    }
-    return TypeDetector
-})
+        isRegExp:isRegExp
+    };
+    return TypeDetector;
+});
